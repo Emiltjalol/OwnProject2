@@ -1,0 +1,109 @@
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:OwnProject2.ViewModels"
+    x:Class="OwnProject2.Views.DogInformationPage"
+    Title="Dog Information">
+    <ContentPage.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="Brown" Offset="0.1"/>
+        <GradientStop Color="LightGreen" Offset="1"/>
+    </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InchesToCentimetersConverter x:Key="InchesToCentimetersConverter" />
+            <local:PoundsToKilosConverter x:Key="PoundsToKilosConverter" />
+            <local:GoodWithChildrenConverter x:Key="GoodWithChildrenConverter" />
+            <local:GoodWithOtherDogsConverter x:Key="GoodWithOrderDogsConverter" />
+            <local:TraitLevelConverter x:Key="TraitLevelConverter" />
+            <local:GoodWithStrangersConverter x:Key="GoodWithStrangersConverter" />
+            <local:PlayfulOrNotConverter x:Key="PlayfulOrNotConverter" />
+            <local:TrainabilityLevelConverter x:Key="TrainabilityLevelConverter" />
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout >
+                                <Image Source="{Binding image_link}" WidthRequest="400" HeightRequest="400" />
+                                <Label Text="{Binding name}" HorizontalTextAlignment="Center" FontSize="30" FontAttributes="Bold" />
+                            </StackLayout>
+                  
+
+                            <Grid HorizontalOptions="Center">
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Frame CornerRadius="5" BorderColor="Black"  BackgroundColor="White" Padding="15" Margin="10,10,10,10">
+                                        <Grid RowDefinitions="*,*,*,*,*">
+                                            <Label Grid.Row="0"  Text="{Binding good_with_children, Converter={StaticResource GoodWithChildrenConverter}, StringFormat= 'Behaviour with children: {0}'}" />
+                                            <Label Grid.Row="1"  Text="{Binding good_with_other_dogs, Converter={StaticResource GoodWithOrderDogsConverter},StringFormat= 'Behaviour with other dogs: {0}'}" />
+                                            <Label Grid.Row="2" Text="{Binding good_with_strangers, Converter={StaticResource GoodWithStrangersConverter}, StringFormat ='Behaviour with strangers: {0}'}" />
+                                            <Label Grid.Row="3" Text="{Binding playfulness, Converter={StaticResource PlayfulOrNotConverter}, StringFormat='Playfulness: {0}'}"/>
+                                            <Label Grid.Row="4" Text="{Binding trainability, Converter={StaticResource TrainabilityLevelConverter}, StringFormat='Trainability: {0}'}"/>
+                                        </Grid>
+                                     </Frame>                       
+                                </StackLayout>
+                            </Grid>
+                            
+
+                            <Grid HorizontalOptions="Center">
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Frame Grid.Column="1"  CornerRadius="5" BorderColor="black" BackgroundColor="White" Padding="5" Margin="10,10,10,10">
+                                        <Grid RowDefinitions="*,*,*,*,*">
+                                            <Label Grid.Row="0" Grid.Column="0"  Text="Breed standard male" FontAttributes="Bold"/>
+
+                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding min_weight_male,Converter={StaticResource PoundsToKilosConverter}, StringFormat='Min weight: {0:F1} kg.'}"
+                                                   HorizontalTextAlignment="Center"/>
+                                            <Label Grid.Row="2" Grid.Column="1"  Text="{Binding max_weight_male, Converter={StaticResource PoundsToKilosConverter},StringFormat='Max weight: {0:F1} kg.'}"
+                                                   HorizontalTextAlignment="Center"/>
+                                            <Label Grid.Row="3" Grid.Column="1"  Text="{Binding min_height_male,Converter={StaticResource InchesToCentimetersConverter}, StringFormat='Min height: {0:F1} cm.'}"
+                                                   HorizontalTextAlignment="Center"/>
+                                            <Label Grid.Row="4" Grid.Column="1"  Text="{Binding max_height_male,Converter={StaticResource InchesToCentimetersConverter}, StringFormat='Max height: {0:F1} cm.'}"
+                                                   HorizontalTextAlignment="Center"/>
+                                        </Grid>
+                                    </Frame>
+
+                                    <Frame Grid.Column="1"  CornerRadius="5" BorderColor="black" BackgroundColor="White" Padding="5" Margin="10,10,10,10">
+                                        <Grid RowDefinitions="*,*,*,*,*">
+                                            <Label Grid.Row="0" Grid.Column="0"  Text="Breed standard female" FontAttributes="Bold"/>
+                                            
+                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding min_weight_female,Converter={StaticResource PoundsToKilosConverter}, StringFormat='Min weight: {0:F1} kg.'}"
+                                                HorizontalTextAlignment="Center"/>
+                                            <Label Grid.Row="2" Grid.Column="1"  Text="{Binding max_weight_female, Converter={StaticResource PoundsToKilosConverter},StringFormat='Max weight: {0:F1} kg.'}"
+                                                HorizontalTextAlignment="Center"/>                              
+                                            <Label Grid.Row="3" Grid.Column="1"  Text="{Binding min_height_female,Converter={StaticResource InchesToCentimetersConverter}, StringFormat='Min height: {0:F1} cm.'}"
+                                                HorizontalTextAlignment="Center"/>
+                                            <Label Grid.Row="4" Grid.Column="1"  Text="{Binding max_height_female,Converter={StaticResource InchesToCentimetersConverter}, StringFormat='Max height: {0:F1} cm.'}"
+                                                HorizontalTextAlignment="Center"/>                                    
+                                    </Grid>
+                                 </Frame>
+                                    <Frame Grid.Column="1"  CornerRadius="5" BorderColor="black" BackgroundColor="White" Padding="5" Margin="10,10,10,10">
+                                        <Grid RowDefinitions="*,*,*,*,*,*">
+
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding protectiveness, Converter={StaticResource TraitLevelConverter}, StringFormat='Protectiveness level: {0}'}"/>
+                                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding energy,Converter={StaticResource TraitLevelConverter}, StringFormat='Energy level: {0}'}"/>
+                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding barking,Converter={StaticResource TraitLevelConverter}, StringFormat='Barking level: {0}'}"/>
+                                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding shedding,Converter={StaticResource TraitLevelConverter}, StringFormat='Shedding level: {0}'}" />
+                                            <Label Grid.Row="4" Grid.Column="1" Text="{Binding grooming, Converter={StaticResource TraitLevelConverter}, StringFormat='Grooming level: {0}'}"/>
+                                            <Label Grid.Row="5" Grid.Column="1" Text="{Binding drooling, Converter={StaticResource TraitLevelConverter}, StringFormat='Drooling level: {0}'}" />
+
+
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>                        
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

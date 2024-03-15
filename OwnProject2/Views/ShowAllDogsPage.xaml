@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OwnProject2.Views.ShowAllDogsPage"
+             Title="ShowAllDogsPage">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Brown" Offset="0.1"/>
+            <GradientStop Color="LightGreen" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding}" ItemSelected="SelectedDogBreed">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                           <Grid>
+                           <Grid.ColumnDefinitions>
+                              <ColumnDefinition Width="Auto" /> 
+                              <ColumnDefinition Width="*" /> 
+                           </Grid.ColumnDefinitions>
+                           <Image Source="{Binding image_link}" WidthRequest="150" HeightRequest="150" Grid.Column="0" Margin="0,0,10,0" /> 
+                                <Label Text="{Binding name}" VerticalTextAlignment="Center" FontSize="30" FontAttributes="Bold" Grid.Column="1" Margin="10,0,0,0" />
+                            </Grid>
+
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

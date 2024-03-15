@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OwnProject2.Views.SortByCategory"
+             Title="">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Brown" Offset="0.1"/>
+            <GradientStop Color="LightGreen" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout>
+        <Label 
+            Text="Sort by category!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Margin="0,40,0,0"
+            FontSize="30"/>
+
+
+        <Button
+            WidthRequest="300"
+            Text="Show all dogs sorted by A-Z"
+            Clicked="GetAllDogsFromDb"
+            FontSize="15"
+            BackgroundColor="lightblue"
+            Margin="0, 30, 0, 20">            
+        </Button>
+
+        <Button
+            WidthRequest="300"
+            Text="Largest to smallest by weight"
+            Clicked="GetAllDogsSortedBySizeWeight"
+            FontSize="15"
+            BackgroundColor="lightblue"
+            Margin="0, 0, 0, 20">
+            
+        </Button>
+
+        <Button
+            WidthRequest="300"
+            Text="Largest to smallest by height"
+            Clicked="GetAllDogsSortedBySizeHeight"
+            FontSize="15"
+            BackgroundColor="lightblue"
+            Margin="0, 0, 0, 20">
+
+        </Button>
+        
+        <Button
+            WidthRequest="300"
+            Text="Trainability"
+            Clicked="GetAllDogsSortedByTrainability"
+            FontSize="15"
+            BackgroundColor="lightblue"
+            Margin="0, 0, 0, 20">
+        </Button>
+        
+        <Button
+             WidthRequest="300"
+             Text="Playfulness"
+             Clicked="GetAllDogsSortedByPlayfulness"
+             FontSize="15"
+             BackgroundColor="lightblue"
+             Margin="0, 0, 0, 20">
+        </Button>
+        <Button
+             WidthRequest="300"
+             Text="Energy level"
+             Clicked="GetAllDogsSortedByEnergyLevel"
+             FontSize="15"
+             BackgroundColor="lightblue"
+             Margin="0, 0, 0, 20">
+        </Button>
+
+        <Button
+            Text="Back to mainpage"
+            WidthRequest="300"
+            BackgroundColor="White"
+            Grid.Row="1"
+            FontSize="15"
+            Clicked="OnBackClicked"
+            Margin="0, 0, 0, 20">
+        </Button>
+    </VerticalStackLayout>
+</ContentPage>
+
+
+

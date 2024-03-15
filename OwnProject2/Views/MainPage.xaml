@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OwnProject2.MainPage">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Brown" Offset="0.1"/>
+            <GradientStop Color="LightGreen" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout
+           
+            Spacing="25"
+            Padding="30"
+            >
+
+            <Label
+                Text="Welcome to Doggypedia"
+                FontSize="25"
+                HorizontalTextAlignment="Center">
+                
+            </Label>
+            <Image
+                Source="dog.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Dog picture" />
+
+   
+            <Button
+                x:Name="Search"
+                Text="Search" 
+                SemanticProperties.Hint="Go to seachbar"
+                Clicked="GoToSearch"
+                WidthRequest="300"
+                HorizontalOptions="Fill" 
+                BackgroundColor="LightBlue"
+                FontSize="20"/>
+
+            <Button
+                x:Name="SortByCategory"
+                Text="Sort by category"
+                Clicked="GoToSort"
+                WidthRequest="300"
+                HorizontalOptions="Fill"
+                Background="LightBlue"
+                FontSize="20">
+                
+            </Button>
+
+           
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

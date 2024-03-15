@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OwnProject2.Views.Search"
+             Title="Search">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Brown" Offset="0.1"/>
+            <GradientStop Color="LightGreen" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <StackLayout>
+                <Entry x:Name="Searchbar"
+                       TextChanged="SearchEntryOnTextChanged"
+                       WidthRequest="300"
+                       HeightRequest="40"
+                       FontSize="20"
+                       BackgroundColor="white"
+                       TextColor="Black"
+                       Margin="0,50,0,10"
+                       Placeholder="Enter search text"/>
+                <ListView x:Name="SearchSuggestionListView"
+                IsVisible="false"                          
+                          WidthRequest="300"
+                          HeightRequest="100"
+                          BackgroundColor="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding}"
+                            Tapped="SearchSuggestionTapped"
+                            TextColor="Black"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+         
+            
+            <Button
+               x:Name="SearchBtnApi"
+               Text="Search API"
+               Clicked="ClickedOnSearchApi"
+               BackgroundColor="LightBlue"
+               WidthRequest="300"
+               Grid.Row="1"
+               Margin="0, 20, 0, 0"
+           />
+            
+            <Button
+             x:Name="SearchBtn"
+             Text="Search in DB"
+             Clicked="ClickedOnSearch"
+             BackgroundColor="LightBlue"
+             WidthRequest="300"
+             Grid.Row="2"
+             Margin="0, 20, 0, 15"
+             />
+
+            <Button
+              Text="Back to mainpage"
+              WidthRequest="300"
+              BackgroundColor="White"
+              Grid.Row="3"              
+              Margin="0, 0, 0, 15"
+              Clicked="OnBackClicked" />
+            
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>
